@@ -10,6 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { Product } from './DataTable';
 
 const EditProduct : React.FC = () => {
+    useEffect(() => {
+        document.title = 'Edit Product';
+      }, []);
     const [product, setProduct] = useState<any>({
         name: '',
         price: 0,
@@ -83,6 +86,7 @@ const EditProduct : React.FC = () => {
     
   return (
     <>
+        
          <div className="flex flex-col items-center justify-start mt-15">
             <div className="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
                 <h1 className="text-2xl font-bold mb-4">Add Product</h1>

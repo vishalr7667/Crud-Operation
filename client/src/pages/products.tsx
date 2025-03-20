@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useFetch from '../utils/UseFetch';
 import { Link } from 'react-router-dom';
 import DataTable, { Product } from './DataTable'; // Import DataTable & Product type
 
 const Products: React.FC = () => {
+    useEffect(() => {
+        document.title = 'Products';
+      }, []);
     // Fetch data from API
     const { data, loading, error } = useFetch<Product[]>('http://localhost:8000/api/v1/products/view-products');
 
@@ -18,6 +21,8 @@ const Products: React.FC = () => {
     }
 
     return (
+        <>
+        <title>Products</title>
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold ">Products</h1>
 
@@ -30,6 +35,7 @@ const Products: React.FC = () => {
                 <DataTable data={data || []} />
             </div>
         </div>
+        </>
     );
 };
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Label from '../components/Label'
 import Input from '../components/Input'
 import { useForm, FieldValues } from 'react-hook-form'
@@ -7,6 +7,9 @@ import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 const AddProduct: React.FC = () => {
+    useEffect(() => {
+        document.title = 'Add Product';
+      }, []);
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = async (data: FieldValues) => {
@@ -37,6 +40,7 @@ const AddProduct: React.FC = () => {
     }
   return (
     <div>
+        <title>Add Product</title>
          <div className="flex flex-col items-center justify-start mt-15">
             <div className="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
                 <h1 className="text-2xl font-bold mb-4">Add Product</h1>

@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContext } from 'react';
 import { AuthContext } from '../context/Auth';
 import { Link } from 'react-router-dom';
 const Home : React.FC = () => {
+  useEffect(() => {
+    document.title = 'Home';
+  }, []);
   const {auth} = useContext(AuthContext);
   // const auth = authContext?.auth;
   return (

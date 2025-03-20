@@ -3,7 +3,9 @@ import useFetch from '../utils/UseFetch';
 import { Link, useParams } from 'react-router-dom';
 
 const ViewProduct:React.FC = () => {
-	
+	useEffect(() => {
+		document.title = 'View Product';
+	  }, []);
 	const [product, setProduct] = useState<any>({
         name: '',
         price: 0,
@@ -31,6 +33,7 @@ const ViewProduct:React.FC = () => {
 
   return (
 	<div className='w-full h-full flex justify-center items-center p-10'>
+		<title>View Products</title>
 		<div className='w-1/2 border border-2 rounded-2xl border-gray-300 pb-5 shadow-2xl shadow-gray-500'>
 			<img src={product.image} className='w-50 h-50 mx-auto rounded-full mt-2'/>
 	  		{product.name && <h1 className='text-2xl text-center capitalize font-bold mt-2'>{product.name}</h1>}

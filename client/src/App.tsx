@@ -22,7 +22,7 @@ function App() {
           <BrowserRouter>
             <Routes>
             <Route element={<PrivateRoute />}>
-              <Route element={<Layout />}>
+              <Route element={<Layout title='My Website' />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path='/products' element={<Products />} />
