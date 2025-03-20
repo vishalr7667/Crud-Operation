@@ -22,7 +22,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <header className="bg-white">
+    <header className="bg-gray-800 mb-4 ">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex">
           <Link to="/" className="-m-1.5 p-1.5">
@@ -37,7 +37,7 @@ export default function Header() {
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-center">
             <Link to="/products" className='-m-1.5 p-1.5'>
-                <span className='text-gray-900 text-sm/6 font-semibold'>Products</span>
+                <span className='text-white text-sm/6 font-semibold'>Products</span>
             </Link>
         </div>
           
