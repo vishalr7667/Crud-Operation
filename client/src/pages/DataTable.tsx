@@ -20,7 +20,12 @@ const DataTable: React.FC<{ data: Product[] }> = ({ data }) => {
     // ✅ Move `useMemo` inside the functional component
     const columns = useMemo<ColumnDef<Product>[]>(
       () => [
-        { accessorKey: "_id", header: "ID" },
+        {
+          accessorKey: "serial",
+          header: "S.No",
+          cell: ({ row }) => row.index + 1, // row.index starts from 0, so add 1
+        },
+        // { accessorKey: "_id", header: "ID" },
         { accessorKey: "name", header: "Name" },
         { accessorKey: "price", header: "Price" },
         { accessorKey: "description", header: "Description" },
@@ -82,7 +87,7 @@ const DataTable: React.FC<{ data: Product[] }> = ({ data }) => {
         <input
           type="text"
           placeholder="Search..."
-          onChange={(e) => table.getColumn("name, description, category")?.setFilterValue(e.target.value)}
+          onChange={(e) => table.setGlobalFilter(e.target.value)}
           className="border p-2 mt-2 mb-4 rounded-2xl border-gray-400 float-right block"
         />
   
