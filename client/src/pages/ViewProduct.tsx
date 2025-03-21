@@ -3,22 +3,36 @@ import useFetch from '../utils/UseFetch';
 import { Link, useParams } from 'react-router-dom';
 
 const ViewProduct:React.FC = () => {
+
+	interface Product {
+		_id: string;
+		name: string;
+		price: number;
+		description: string;
+		image: string;
+		category: string;
+		stock: number;
+	}
+
 	useEffect(() => {
 		document.title = 'View Product';
 	  }, []);
-	const [product, setProduct] = useState<any>({
+	const [product, setProduct] = useState<Product>({
+		_id: '',
         name: '',
         price: 0,
         description: '',
         category: '',
         stock: 0,
-        image: ''
+        image: 'http://localhost:5173/dummy.png'
     });
     const { id } = useParams();
     
-    const { data, loading, error } = useFetch<{}>(`http://localhost:8000/api/v1/products/${id}`);
+    const { data, loading, error } = useFetch<Product>(`http://localhost:8000/api/v1/products/${id}`);
 
 	useEffect(() => {
+		console.log(data);
+		
 		if (data) {
 			setProduct(data);
 		}
@@ -34,7 +48,7 @@ const ViewProduct:React.FC = () => {
   return (
 	<div className='w-full h-full flex justify-center items-center p-10'>
 		<title>View Products</title>
-		<div className='w-1/2 border border-2 rounded-2xl border-gray-300 pb-5 shadow-2xl shadow-gray-500'>
+		<div className='w-1/2 border-2 rounded-2xl border-gray-300 pb-5 shadow-2xl shadow-gray-500'>
 			<img src={product.image} className='w-50 h-50 mx-auto rounded-full mt-2'/>
 	  		{product.name && <h1 className='text-2xl text-center capitalize font-bold mt-2'>{product.name}</h1>}
 
